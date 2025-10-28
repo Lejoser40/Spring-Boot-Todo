@@ -2,6 +2,8 @@ package com.example.TodoList.models;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -20,6 +22,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "todos")
 public class Todo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,20 +30,13 @@ public class Todo {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
-    private String text;
+    private String description;
 
-    @Column(nullable = false)
+    @CreationTimestamp
     private LocalDateTime date;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private TodoStatus completed;
+    private TodoStatus status;
 
-    public Todo(String text) {
-        this.text = text;
-    }
-
-    public void setId(Object o) {
-    }
 }
