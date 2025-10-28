@@ -1,7 +1,11 @@
 package com.example.TodoList.models;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,14 +25,20 @@ public class Todo {
     private Long id;
 
     @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
     private String text;
 
     @Column(nullable = false)
-    private boolean completed;
+    private LocalDateTime date;
 
-    public Todo(String text, boolean completed) {
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TodoStatus completed;
+
+    public Todo(String text) {
         this.text = text;
-        this.completed = completed;
     }
 
     public void setId(Object o) {

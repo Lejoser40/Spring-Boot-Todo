@@ -1,0 +1,2 @@
+USE todoList;
+DROP TABLE IF EXISTS todos;
